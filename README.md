@@ -18,7 +18,7 @@ A third page will allow the GM to select the characters involved in the fight, e
 
 ## Functionalities 
 
-### Main have - Game Master-centric
+### Must have - Game Master-centric
 
 This application is mainly focused on the GM side. 
 
@@ -49,3 +49,6 @@ This application is mainly focused on the GM side.
 
 - This application will be developed with Ruby on Rails.
 - Multiple accounts are not needed here. The authentication will be managed with a single configured account defined during the deployment (environment). The authentication will be necessary for the GM to access the configuration and full-scoped initiative tracker. 
+- Database initial image
+
+<img width="363" alt="image" src="https://github.com/margauxdivernois/initiative-tracker/assets/11376158/094f1d40-25ba-437e-8ad4-e4ad10a78d21">
