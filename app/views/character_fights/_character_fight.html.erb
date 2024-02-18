@@ -1,0 +1,25 @@
+<div class="grid v-align-middle">
+  <span class="is-medium-heading m-1">18</span>
+  <%= character_fight.character.name %>
+  <div class="column">
+    <% if character_fight.character.url %>
+      <a href="<%= character_fight.character.url %>" target="_blank">
+        <i class="iconoir-shield-broken"></i>
+      </a>
+    <% end %>
+  </div>
+  <div class="column">
+    <span>
+      <i class="iconoir-shield-broken v-align-middle"></i>
+      <span class="v-align-middle">
+        <%= character_fight.character.ac %>
+      </span>
+    </span>
+    <span>
+      <i class="iconoir-heart v-align-middle"></i>
+      <span class="v-align-middle">
+        <%= character_fight.pv %> PV
+      </span>
+    </span>
+  </div>
+</div>
