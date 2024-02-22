@@ -1,15 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  details: MyText
-  pv: 1
-  ac: 1
-  url: MyString
+  name: Elean
+  details: Roublarde utopiste
+  pv: 93
+  ac: 15
 
 two:
-  name: MyString
-  details: MyText
-  pv: 1
-  ac: 1
-  url: MyString
+  name: Aspiel
+  details: Barde imaginatif
+  pv: 12
+  ac: 15

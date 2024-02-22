@@ -7,12 +7,3 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-
-
-elean = Character.create(name: 'Elean', pv: 93, ac: 15)
-aspiel = Character.create(name: 'Aspiel', pv: 12, ac: 15)
-
-fight = Fight.create()
-
-CharacterFight.create(character: elean, fight: fight)
-CharacterFight.create(character: aspiel, fight: fight)

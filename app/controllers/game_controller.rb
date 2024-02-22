@@ -4,7 +4,7 @@ class GameController < ApplicationController
   # GET /game
   def index
     @fight = Fight.last
-    @characters = @fight.character_fights
+    @characters = @fight ? @fight.character_fights : []
     @current = @characters.first
   end
 
