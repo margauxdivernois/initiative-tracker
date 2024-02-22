@@ -1,23 +1,26 @@
-<div class="grid v-align-middle">
+<div class="grid v-align-middle <%= 'active' if is_current %>">
   <span class="is-medium-heading m-1">
     <%= character_fight.initiative %>
   </span>
-  <%= character_fight.character.name %>
-  <div class="column">
+  <div class="m-1">
+    <span class="is-small-heading mb-0">
+      <%= character_fight.character.name %>
+    </span>
+    <%= character_fight.character.details %>
+  </div>
+  <div class="column has-text-right">
     <% if character_fight.character.url %>
-      <a href="<%= character_fight.character.url %>" target="_blank">
-        <i class="iconoir-shield-broken"></i>
+      <a class="statistics me-4" href="<%= character_fight.character.url %>" target="_blank">
+        <i class="iconoir-link v-align-middle"></i>
       </a>
     <% end %>
-  </div>
-  <div class="column">
-    <span>
+    <span class="statistics">
       <i class="iconoir-shield-broken v-align-middle"></i>
       <span class="v-align-middle">
         <%= character_fight.character.ac %>
       </span>
     </span>
-    <span>
+    <span class="statistics">
       <i class="iconoir-heart v-align-middle"></i>
       <span class="v-align-middle">
         <%= character_fight.pv %> PV

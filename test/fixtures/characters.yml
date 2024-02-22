@@ -11,3 +11,10 @@ two:
   details: Barde imaginatif
   pv: 12
   ac: 15
+
+three:
+  name: Goblin
+  details: Humanoïde (gobelinoïde) de taille P
+  pv: 7
+  ac: 15
+  url: https://www.aidedd.org/dnd/monstres.php?vf=gobelin

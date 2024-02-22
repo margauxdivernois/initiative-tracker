@@ -57,3 +57,34 @@ html, body, main {
 .me-1 {
     margin-right: 0.25em;
 }
+
+.me-4 {
+    margin-right: 1em;
+}
+
+.mb-0 {
+    margin-bottom: 0em;
+}
+
+.active {
+    background-color: var(--color-primary);
+    color: var(--color-primary-text);
+    border-radius: 1em;
+}
+
+/* Fix issue with color of the heading */
+.is-medium-heading, .is-small-heading {
+    color: inherit;
+}
+
+.statistics {
+    font-size: 1.25rem;
+}
+
+a.statistics:hover {
+    text-decoration: none;
+}
+
+.active a {
+    color: white;
+}

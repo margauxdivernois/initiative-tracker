@@ -9,5 +9,17 @@ one:
 two:
   character: two
   fight: one
-  pv: 55
+  pv: 15
   initiative: 10
+
+three:
+  character: three
+  fight: one
+  pv: 15
+  initiative: 8
+
+four:
+  character: three
+  fight: one
+  pv: 12
+  initiative: 8
