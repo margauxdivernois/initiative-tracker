@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_193831) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "current_player_id"
-    t.integer "turn_count", default: 0
+    t.integer "turn_count", default: 1
     t.index ["current_player_id"], name: "index_fights_on_current_player_id"
   end
 
