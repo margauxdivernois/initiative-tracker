@@ -1,5 +1,5 @@
 class CharacterFightsController < ApplicationController
-  before_action :set_character_fight, only: %i[ edit update edit_initiative]
+  before_action :set_character_fight, only: %i[ edit update edit_initiative edit_pv destroy ]
 
   # GET /character_fights/1/edit
   def edit
@@ -22,6 +22,18 @@ class CharacterFightsController < ApplicationController
   def edit_initiative
   end
 
+  # GET /character_fights/1/edit_pv
+  def edit_pv
+  end
+
+  def destroy
+    @character_fight.destroy
+
+    respond_to do |format|
+      format.html { redirect_back_or_to :index }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_character_fight
@@ -30,6 +42,6 @@ class CharacterFightsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def character_fight_params
-      params.require(:character_fight).permit(:initiative)
+      params.require(:character_fight).permit(:initiative, :pv)
     end
 end

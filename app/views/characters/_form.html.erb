@@ -1,32 +1,40 @@
-<%= form_for :character do |form| %>
-    <%= form.label :name, "Nom" %>
+<%= form_for @character do |form| %>
+
+    <%= form.label :name %>
     <%= form.text_field :name, placeholder: "Nom du personnage" %>
+    <%= render "/helpers/form_error", element: @character, field: :name %>
 
-    <%= form.label :details, "Détails" %>
+    <%= form.label :details, class: "mt-2" %>
     <%= form.text_field :details, placeholder: "Détails visibles sur le personnage" %>
+    <%= render "/helpers/form_error", element: @character, field: :details %>
 
-    <%= form.label :pv, "Points de vie" %>
-    <%= form.number_field :pv %>
+    <%= form.label :pv, class: "mt-2" %>
+    <%= form.number_field :pv, step: 1 %>
+    <%= render "/helpers/form_error", element: @character, field: :pv %>
 
-    <%= form.label :ac, "Classe d'Armure" %>
-    <%= form.number_field :ac %>
+    <%= form.label :ac, class: "mt-2" %>
+    <%= form.number_field :ac, in: 1.0..40.0, step: 1 %>
+    <%= render "/helpers/form_error", element: @character, field: :ac %>
 
-    <%= form.label :url, "Lien" %>
+    <%= form.label :url, class: "mt-2" %>
     <%= form.text_field :url, placeholder: "Lien externe privé" %>
+    <%= render "/helpers/form_error", element: @character, field: :url %>
 
-    <%= form.label :character_type, "Type de personnage" %>
+    <%= form.label :character_type, class: "mt-2" %>
     <div class="is-select">
-        <%= form.select :character_type, Character.character_types %>
+        <%= form.select :character_type, Character.character_types.keys %>
+    </div>
+    <%= render "/helpers/form_error", element: @character, field: :character_type %>
+
+    <div class="mt-2">
+        <%= form.check_box :countable, class: "mt-2" %>
+        <%= form.label :countable, "Personnage duplicable" %>
     </div>
 
-    <%= form.check_box :countable %>
-    <%= form.label :countable, "Personnage duplicable" %>
-
-    <div>
-        <%= button_tag type: "submit", class: "button is-rounded is-shrink mb-0" do %>
-            <i class="iconoir-plus-circle"></i> Créer et ajouter le personnage au combat
+    <div class="has-text-center">
+        <%= button_tag type: "submit", class: "button is-rounded is-primary is-shrink mb-0 mt-2" do %>
+            <i class="iconoir-plus-circle me-1"></i> Créer et ajouter le personnage au combat
         <% end %>
     </div>
-
 
 <% end %>

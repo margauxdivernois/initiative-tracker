@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "pv_frame" do %>
+  <%= turbo_stream.replace dom_id(@character_fight, :edit_pv) do %>
+    <%= render "pv_form", character_fight: @character_fight %>
+  <% end %>
+<% end %>

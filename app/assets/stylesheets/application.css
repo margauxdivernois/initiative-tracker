@@ -34,6 +34,7 @@ html, body, main {
 
 .v-align-middle {
     vertical-align: middle;
+    align-items: center
 }
 
 .flex-grow {
@@ -56,6 +57,10 @@ html, body, main {
 
 .me-1 {
     margin-right: 0.25em;
+}
+
+.me-2 {
+    margin-right: 0.5em;
 }
 
 .me-4 {
@@ -87,6 +92,7 @@ html, body, main {
 
 .statistics {
     font-size: 1.25rem;
+    --theme-font-size: 1.25rem;
 }
 
 a.statistics:hover {
@@ -95,4 +101,36 @@ a.statistics:hover {
 
 .active a {
     color: white;
+}
+
+input.small-input {
+    width: 50px;
+    height: 34px;
+}
+
+.inspiration {
+    width: 70px;
+    height: 50px;
+}
+
+input.inspiration-input {
+    width: 70px;
+    height: 50px;
+    --font-color: inherit;
+    --font-family: var(--theme-heading-font-family);
+    --font-weight: 600;
+    --line-height: 1.4;
+    color: var(--font-color);
+    display: block;
+    font-family: var(--font-family);
+    font-size: 1.875rem;
+    font-weight: var(--font-weight);
+    line-height: var(--line-height);
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+}
+
+.error-message {
+    color: darkred;
+    font-size: smaller;
 }

@@ -1,5 +1,5 @@
 <div class="grid v-align-middle flex-space-between">
-    <div class="m-1">
+    <div class="m-1 column">
         <span class="is-small-heading"><%= character.name %></span>
         <span class="is-very-small-heading is-subheading">
           <span><%= character.details %></span><br>
@@ -18,12 +18,11 @@
               action: 'blur->submitable#submit keydown.esc->reloader#reload'
           },
           step: 1,
-          style: "width: 50px; height: 34px",
-          class: "me-1"
+          class: "me-1 small-input"
           %>
           <%= button_tag type: "submit", class: "button is-rounded is-shrink mb-0 #{selected_class}" do %>
             <% if count_in_fight > 0 %>
-              <i class="iconoir-design-pencil"></i>
+              <i class="iconoir-floppy-disk"></i>
             <% else %>
               <i class="iconoir-plus-circle"></i>
             <% end %>
@@ -40,4 +39,12 @@
       <% end %>
     </div>
 
+    <div class="column is-shrink grid">
+      <%= link_to edit_character_path(character), class: "button is-rounded is-shrink mb-0 me-1" do %>
+        <i class="iconoir-edit-pencil"></i>
+      <% end %>
+      <%= button_to character, method: :delete, class: "button is-rounded is-shrink mb-0" do %>
+        <i class="iconoir-bin-full"></i>
+      <% end %>
+    </div>
 </div>

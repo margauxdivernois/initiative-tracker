@@ -16,13 +16,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :character_fights, only: [:edit, :update] do
+  resources :character_fights, only: [:edit, :update, :destroy] do
     member do
       get :edit_initiative
+      get :edit_pv
     end
   end
 
-  resources :characters do
+  resources :characters, except: [:show] do
   end
 
 end
