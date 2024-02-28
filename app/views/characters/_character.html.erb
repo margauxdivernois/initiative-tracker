@@ -1,0 +1,43 @@
+<div class="grid v-align-middle flex-space-between">
+    <div class="m-1">
+        <span class="is-small-heading"><%= character.name %></span>
+        <span class="is-very-small-heading is-subheading">
+          <span><%= character.details %></span><br>
+          <span><%= character.pv %> PV - <%= character.ac %> AC</span>
+        </span>
+    </div>
+
+    <div class="column is-shrink grid">
+      <% selected_class = "is-primary" if count_in_fight > 0 %>
+      <% if character.countable %>
+        <%= form_for :character, url: add_to_fight_game_index_path, data: { controller: 'submitable reloader' } do |form| %>
+          <%= form.hidden_field :character, value: character.id %>
+          <%= form.number_field :count, value: count_in_fight,
+          data: {
+              controller: 'input-focus',
+              action: 'blur->submitable#submit keydown.esc->reloader#reload'
+          },
+          step: 1,
+          style: "width: 50px; height: 34px",
+          class: "me-1"
+          %>
+          <%= button_tag type: "submit", class: "button is-rounded is-shrink mb-0 #{selected_class}" do %>
+            <% if count_in_fight > 0 %>
+              <i class="iconoir-design-pencil"></i>
+            <% else %>
+              <i class="iconoir-plus-circle"></i>
+            <% end %>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= button_to add_to_fight_game_index_path(character: { count: count_in_fight === 0 ? 1 : 0, character: character }), class: "button is-rounded is-shrink mb-0 #{selected_class}" do %>
+          <% if count_in_fight > 0 %>
+            <i class="iconoir-xmark-circle"></i>
+          <% else %>
+            <i class="iconoir-plus-circle"></i>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+
+</div>

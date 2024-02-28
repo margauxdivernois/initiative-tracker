@@ -1,5 +1,10 @@
-<div class="grid v-align-middle <%= 'active' if is_current %>">
-  <span class="is-medium-heading m-1">
+<div
+    class="grid v-align-middle <%= 'active' if is_current %>">
+   <span
+    data-controller="visitable"
+    data-visitable-url-value="<%= edit_initiative_character_fight_path(character_fight) %>"
+    class="is-medium-heading m-1"
+    data-action="dblclick->visitable#visit">
     <%= character_fight.initiative %>
   </span>
   <div class="m-1">
@@ -9,7 +14,7 @@
     <%= character_fight.character.details %>
   </div>
   <div class="column has-text-right">
-    <% if character_fight.character.url %>
+    <% if character_fight.character.url.present? %>
       <a class="statistics me-4" href="<%= character_fight.character.url %>" target="_blank">
         <i class="iconoir-link v-align-middle"></i>
       </a>

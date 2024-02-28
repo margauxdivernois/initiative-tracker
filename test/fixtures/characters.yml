@@ -18,3 +18,5 @@ three:
   pv: 7
   ac: 15
   url: https://www.aidedd.org/dnd/monstres.php?vf=gobelin
+  countable: true
+  character_type: 1

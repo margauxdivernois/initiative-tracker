@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_22_193831) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_25_162050) do
   create_table "character_fights", force: :cascade do |t|
     t.integer "character_id", null: false
     t.integer "fight_id", null: false
@@ -30,6 +30,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_22_193831) do
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "character_type", default: 0
+    t.boolean "countable", default: false
   end
 
   create_table "fights", force: :cascade do |t|

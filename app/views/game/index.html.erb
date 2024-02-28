@@ -1,24 +1,24 @@
-<div class="grid h-100">
-  <div class="main-section h-100 column is-two-thirds grid is-vertical flex-space-between">
-    <!-- TODO Secure against nullable @fight -->
-    <div class="column is-shrink">
-      <% @fight.character_fights.each do |character| %>
-          <%= render character, is_current: @fight.current_player === character %>
-      <% end %>
-    </div>
-    <div class="column is-shrink grid flex-space-between">
-      <%= button_to @character, method: :delete, class: 'button is-rounded is-shrink' do %>
-        <i class="iconoir-plus-circle me-1"></i> Ajouter un personnage
-      <% end %>
-
-      Tour n°<%= @fight.turn_count %>
-
-      <%= button_to 'next', method: :next, class: 'button is-primary is-rounded is-shrink' do %>
-        <i class="iconoir-arrow-right me-1"></i>
-        <%= @fight.current_player ? 'Tour suivant' : 'Commencer le combat' %>
-      <% end %>
-
-    </div>
+<% if @fight.present? %>
+<div class="main-section h-100 column is-two-thirds grid is-vertical flex-space-between">
+  <div class="column is-shrink">
+    <% @fight.character_fights.each do |character| %>
+        <%= render character, is_current: @fight.current_player === character %>
+    <% end %>
   </div>
-  <div class="column h-100 p-0"><img id="character-image" src="https://cdna.artstation.com/p/assets/images/images/030/594/622/large/art-of-nate-halfelf-bigfile.jpg?1601059833" /></div>
+  <div class="column is-shrink grid flex-space-between">
+    <%= link_to characters_path, class: 'button is-rounded is-shrink' do %>
+      <i class="iconoir-plus-circle me-1"></i> Ajouter un personnage
+    <% end %>
+
+    Tour n°<%= @fight.turn_count %>
+
+    <%= button_to next_game_index_path, method: :post, class: 'button is-primary is-rounded is-shrink' do %>
+      <i class="iconoir-arrow-right me-1"></i>
+      <%= @fight.current_player ? 'Tour suivant' : 'Commencer le combat' %>
+    <% end %>
+  </div>
 </div>
+<div class="column h-100 p-0"><img id="character-image" src="https://cdna.artstation.com/p/assets/images/images/030/594/622/large/art-of-nate-halfelf-bigfile.jpg?1601059833" /></div>
+<% else %>
+  Pas de combat en cours
+<% end %>

@@ -1,0 +1,32 @@
+<%= form_for :character do |form| %>
+    <%= form.label :name, "Nom" %>
+    <%= form.text_field :name, placeholder: "Nom du personnage" %>
+
+    <%= form.label :details, "Détails" %>
+    <%= form.text_field :details, placeholder: "Détails visibles sur le personnage" %>
+
+    <%= form.label :pv, "Points de vie" %>
+    <%= form.number_field :pv %>
+
+    <%= form.label :ac, "Classe d'Armure" %>
+    <%= form.number_field :ac %>
+
+    <%= form.label :url, "Lien" %>
+    <%= form.text_field :url, placeholder: "Lien externe privé" %>
+
+    <%= form.label :character_type, "Type de personnage" %>
+    <div class="is-select">
+        <%= form.select :character_type, Character.character_types %>
+    </div>
+
+    <%= form.check_box :countable %>
+    <%= form.label :countable, "Personnage duplicable" %>
+
+    <div>
+        <%= button_tag type: "submit", class: "button is-rounded is-shrink mb-0" do %>
+            <i class="iconoir-plus-circle"></i> Créer et ajouter le personnage au combat
+        <% end %>
+    </div>
+
+
+<% end %>

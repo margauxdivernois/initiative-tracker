@@ -1,0 +1,30 @@
+<div class="main-section h-100 column is-two-fourth grid is-vertical flex-space-between">
+  <div class="column is-shrink">
+    <span class="is-heading">
+        Créer un nouveau personnage
+    </span>
+    <%= render "form" %>
+  </div>
+  <div class="column is-shrink grid flex-space-between">
+    <%= link_to game_index_path, class: 'button is-rounded is-shrink' do %>
+      <i class="iconoir-arrow-left me-1"></i> Retour au combat
+    <% end %>
+
+    <%= link_to game_index_path, method: :next, class: 'button is-primary is-rounded is-shrink' do %>
+      <i class="iconoir-arrow-right me-1"></i> Aller au combat
+    <% end %>
+  </div>
+</div>
+<div class="column h-100">
+    <% @characters.each do | (key, array) | %>
+        <div class="mb-4">
+            <span class="is-heading">
+                <%= key %>
+            </span>
+
+            <% array.each do | character | %>
+                <%= render character, count_in_fight: @fight.character_count_in_fight(character) %>
+            <% end %>
+        </div>
+    <% end %>
+</div>

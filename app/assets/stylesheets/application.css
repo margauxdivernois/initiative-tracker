@@ -66,6 +66,14 @@ html, body, main {
     margin-bottom: 0em;
 }
 
+.mb-4 {
+    margin-bottom: 1em;
+}
+
+.mt-2 {
+    margin-top: 0.5em;
+}
+
 .active {
     background-color: var(--color-primary);
     color: var(--color-primary-text);

@@ -1,0 +1,5 @@
+<%= turbo_frame_tag "initiative_frame" do %>
+  <%= turbo_stream.replace @character_fight do %>
+    <%= render "initiative_form", character_fight: @character_fight %>
+  <% end %>
+<% end %>

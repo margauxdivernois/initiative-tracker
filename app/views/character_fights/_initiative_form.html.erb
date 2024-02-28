@@ -1,0 +1,11 @@
+<div id="<%= dom_id character_fight %>" class="editing">
+  <%= form_for character_fight, data: { controller: 'submitable reloader' } do |form| %>
+    <%= form.number_field :initiative,
+      data: {
+        controller: 'input-focus',
+        action: 'blur->submitable#submit keydown.esc->reloader#reload'
+      },
+      in: 1.0..40.0, step: 1
+    %>
+  <% end %>
+</div>
