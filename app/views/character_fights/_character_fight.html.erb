@@ -42,7 +42,7 @@
     </div>
   </div>
   <div class="column is-shrink statistics">
-    <%= link_to character_fight_path(character_fight), method: :delete do %>
+    <%= link_to character_fight_path(character_fight), data: { turbo_method: :delete } do %>
       <i class="iconoir-user-xmark v-align-middle"></i>
     <% end %>
   </div>
