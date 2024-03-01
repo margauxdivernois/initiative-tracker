@@ -1,39 +1,52 @@
 <%= form_for @character do |form| %>
 
-    <%= form.label :name %>
-    <%= form.text_field :name, placeholder: "Nom du personnage" %>
-    <%= render "/helpers/form_error", element: @character, field: :name %>
+    <%= render "/helpers/form_element",
+        form: form,
+        element: @character,
+        field: :name,
+        placeholder: "Nom du personnage" %>
 
-    <%= form.label :details, class: "mt-2" %>
-    <%= form.text_field :details, placeholder: "Détails visibles sur le personnage" %>
-    <%= render "/helpers/form_error", element: @character, field: :details %>
+    <%= render "/helpers/form_element",
+        form: form,
+        element: @character,
+        field: :details,
+        placeholder: "Détails visibles sur le personnage" %>
 
-    <%= form.label :pv, class: "mt-2" %>
-    <%= form.number_field :pv, step: 1 %>
-    <%= render "/helpers/form_error", element: @character, field: :pv %>
+    <%= render "/helpers/form_element",
+        form: form,
+        element: @character,
+        field: :pv,
+        type: 'number' %>
 
-    <%= form.label :ac, class: "mt-2" %>
-    <%= form.number_field :ac, in: 1.0..40.0, step: 1 %>
-    <%= render "/helpers/form_error", element: @character, field: :ac %>
+    <%= render "/helpers/form_element",
+        form: form,
+        element: @character,
+        field: :ac,
+        type: 'number',
+        number_in: 1.0..40.0 %>
 
-    <%= form.label :url, class: "mt-2" %>
-    <%= form.text_field :url, placeholder: "Lien externe privé" %>
-    <%= render "/helpers/form_error", element: @character, field: :url %>
+    <%= render "/helpers/form_element",
+        form: form,
+        element: @character,
+        field: :url,
+        placeholder: "Lien externe privé" %>
 
-    <%= form.label :character_type, class: "mt-2" %>
-    <div class="is-select">
-        <%= form.select :character_type, Character.character_types.keys %>
-    </div>
-    <%= render "/helpers/form_error", element: @character, field: :character_type %>
+    <%= render "/helpers/form_element",
+        form: form,
+        element: @character,
+        field: :character_type,
+        type: 'select',
+        options: Character.character_types.keys %>
 
-    <div class="mt-2">
-        <%= form.check_box :countable, class: "mt-2" %>
-        <%= form.label :countable, "Personnage duplicable" %>
-    </div>
+    <%= render "/helpers/form_element",
+        form: form,
+        element: @character,
+        field: :countable,
+        type: 'switch' %>
 
     <div class="has-text-center">
         <%= button_tag type: "submit", class: "button is-rounded is-primary is-shrink mb-0 mt-2" do %>
-            <i class="iconoir-plus-circle me-1"></i> Créer et ajouter le personnage au combat
+            <i class="iconoir-plus-circle me-1"></i> Sauvegarder
         <% end %>
     </div>
 

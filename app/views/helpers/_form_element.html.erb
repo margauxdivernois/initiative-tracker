@@ -1,0 +1,22 @@
+<% placeholder ||= nil %>
+<% type ||= 'text' %>
+<% number_in ||= nil %>
+<div>
+    <%= form.label field %>
+    <%= form.text_field field, placeholder: placeholder if type === 'text' %>
+    <%= form.number_field field, placeholder: placeholder, in: number_in if type === 'number' %>
+    <% if type === 'select' %>
+    <div class="is-select">
+        <%= form.select field, options %>
+    </div>
+    <% end %>
+
+    <% if type === 'switch' %>
+    <div class="is-switch is-rounded">
+        <%= form.check_box field %>
+        <input type="checkbox" id="roundedSwitch">
+        <label for="roundedSwitch"></label>
+    </div>
+    <% end%>
+    <div class="field_with_errors is-text-smaller always-take-space"><%= element.errors.full_messages_for(field).join(', ') %></div>
+</div>

@@ -40,6 +40,7 @@ fr:
         ac: Classe d'armure
         url: Lien
         character_type: Type de personnage
+        countable: Personnage duplicable
     errors:
       messages:
         blank: ne peut pas être vide
