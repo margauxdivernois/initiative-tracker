@@ -1,30 +1,49 @@
 <div class="grid v-align-middle <%= 'active' if is_current %>">
-  <span class="is-medium-heading m-1">
+   <span
+    id="<%= dom_id(character_fight, :edit_initiative) %>"
+    data-controller="visitable"
+    data-visitable-url-value="<%= edit_initiative_character_fight_path(character_fight) %>"
+    class="is-medium-heading m-1 inspiration"
+    data-action="dblclick->visitable#visit">
     <%= character_fight.initiative %>
   </span>
-  <div class="m-1">
+  <div class="m-1 column">
     <span class="is-small-heading mb-0">
       <%= character_fight.character.name %>
     </span>
     <%= character_fight.character.details %>
   </div>
-  <div class="column has-text-right">
-    <% if character_fight.character.url %>
+  <div class="column is-shrink">
+    <% if character_fight.character.url.present? %>
       <a class="statistics me-4" href="<%= character_fight.character.url %>" target="_blank">
         <i class="iconoir-link v-align-middle"></i>
       </a>
     <% end %>
+  </div>
+  <div class="column is-shrink">
     <span class="statistics">
       <i class="iconoir-shield-broken v-align-middle"></i>
       <span class="v-align-middle">
         <%= character_fight.character.ac %>
       </span>
     </span>
-    <span class="statistics">
-      <i class="iconoir-heart v-align-middle"></i>
-      <span class="v-align-middle">
-        <%= character_fight.pv %> PV
-      </span>
-    </span>
+  </div>
+  <div class="column is-shrink statistics">
+    <i class="iconoir-heart v-align-middle"></i>
+    <div
+      id="<%= dom_id(character_fight, :edit_pv) %>"
+      data-controller="visitable"
+      data-visitable-url-value="<%= edit_pv_character_fight_path(character_fight) %>"
+      class="v-align-middle is-inline"
+      data-action="dblclick->visitable#visit">
+        <span style="statistics">
+          <%= character_fight.pv %> PV
+        </span>
+    </div>
+  </div>
+  <div class="column is-shrink statistics">
+    <%= link_to character_fight_path(character_fight), data: { turbo_method: :delete } do %>
+      <i class="iconoir-user-xmark v-align-middle"></i>
+    <% end %>
   </div>
 </div>

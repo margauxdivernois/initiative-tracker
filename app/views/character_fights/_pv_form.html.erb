@@ -1,0 +1,12 @@
+<div id="<%= dom_id(character_fight, :edit_pv) %>" class="editing is-inline">
+  <%= form_for character_fight, html: { class: 'is-inline', data: { controller: 'submitable reloader' } } do |form| %>
+    <%= form.number_field :pv,
+      data: {
+        controller: 'input-focus',
+        action: 'blur->submitable#submit keydown.esc->reloader#reload'
+      },
+      step: 1,
+      class: 'me-2 small-input statistics'
+    %>
+  <% end %>
+</div>

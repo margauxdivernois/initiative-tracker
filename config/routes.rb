@@ -8,7 +8,22 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  get 'game', to: 'game#index'
-  post 'next', to: 'game#next'
+
+  resources :game, only: [:index] do
+    collection do
+      post :next, as: 'next'
+      post :add_to_fight, as: 'add_to_fight'
+    end
+  end
+
+  resources :character_fights, only: [:edit, :update, :destroy] do
+    member do
+      get :edit_initiative
+      get :edit_pv
+    end
+  end
+
+  resources :characters, except: [:show] do
+  end
 
 end
