@@ -134,3 +134,31 @@ input.inspiration-input {
     color: darkred;
     font-size: smaller;
 }
+
+/* Names field_with_errors does not follow convention because it is a Rails-set class */
+/* These settings are mostly here to avoid elements on screen to move between both unvalidated and validated state */
+div.field_with_errors {
+    color: darkred;
+    margin-bottom: 0.4em;
+    font-weight: 600;
+}
+
+div.field_with_errors:has(input) {
+    margin-bottom: 0px;
+}
+
+.field_with_errors input {
+    --border-color: darkred;
+}
+
+div.is-text-smaller {
+    font-size: 0.9em;
+    font-weight: inherit;
+    margin-bottom: 0px;
+}
+
+.always-take-space:empty {
+    height: 1.6em;
+    line-height: 1.6em;
+    margin-bottom: 0px;
+}
