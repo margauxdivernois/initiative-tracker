@@ -1,10 +1,15 @@
 class GameController < ApplicationController
- # before_action :set_fight, only: %i[ show edit update archive destroy ]
+  before_action :set_fight, only: %i[ show ]
+  skip_before_action :authenticate, only: %i[ show ]
 
   # GET /game
   def index
     # TODO
     @fight = Fight.last
+  end
+
+  # GET /game/:id
+  def show
   end
 
   # POST /game/next
@@ -71,6 +76,9 @@ class GameController < ApplicationController
   end
 
   private
+    def set_fight
+      @fight = Fight.find(params[:id])
+    end
 
     # Only allow a list of trusted parameters through.
     def add_character_to_fight_params

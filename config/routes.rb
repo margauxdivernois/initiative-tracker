@@ -12,9 +12,8 @@ Rails.application.routes.draw do
   get :login, to: 'authority#login', as: 'login'
   post :login_parse, to: 'authority#login_parse', as: 'login_parse'
   post :logout, to: 'authority#logout', as: 'logout'
-  get :code, to: 'authority#code', as: 'code'
 
-  resources :game, only: [:index] do
+  resources :game, only: [:index, :show] do
     collection do
       post :next, as: 'next'
       post :add_to_fight, as: 'add_to_fight'

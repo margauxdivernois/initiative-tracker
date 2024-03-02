@@ -1,8 +1,8 @@
 <% if @fight.present? %>
 <div class="main-section h-100 column is-two-thirds grid is-vertical flex-space-between">
   <div class="column is-shrink">
-    <% @fight.character_fights.each do |character| %>
-        <%= render character, is_current: @fight.current_player === character %>
+    <% @fight.character_fights.each do |character_fight| %>
+        <%= render 'character_fights/character_fight_gm', is_current: @fight.current_player === character_fight, character_fight: character_fight %>
     <% end %>
   </div>
   <div class="column is-shrink grid flex-space-between">
@@ -11,6 +11,13 @@
     <% end %>
 
     Tour n°<%= @fight.turn_count %>
+
+    <!-- TODO : Something else than a but with hovering system -->
+    <a href="" data-controller="copy-to-clipboard"
+      data-action="click->copy-to-clipboard#copy"
+      data-copy-to-clipboard-content-value="<%= url_for(:id => @fight.id, action: "show", :only_path => false) %>">
+      <i class="iconoir-copy me-1"></i> Copier le lien de partage
+    </a>
 
     <%= button_to next_game_index_path, method: :post, class: 'button is-primary is-rounded is-shrink' do %>
       <i class="iconoir-arrow-right me-1"></i>

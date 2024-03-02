@@ -26,11 +26,6 @@ class AuthorityController < ApplicationController
     end
   end
 
-  # TODO Move
-  # GET /code
-  def code
-  end
-
   private
 
     # Only allow a list of trusted parameters through.
