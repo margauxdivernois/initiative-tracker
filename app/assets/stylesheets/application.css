@@ -29,7 +29,7 @@ html, body, main {
 }
 
 .h-100 {
-    height: 100%;
+    min-height: 100%;
 }
 
 .v-align-middle {
@@ -133,6 +133,42 @@ input.inspiration-input {
 .error-message {
     color: darkred;
     font-size: smaller;
+}
+
+.center-content {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.is-relative {
+    position: relative;
+}
+
+#logout-button {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+#lock-login {
+    font-size: x-large;
+    color: var(--color-primary);
+    position: absolute;
+    top: 0em;
+    right: 0.5em;
+}
+
+.alert {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    z-index: 100;
+}
+
+/* Because the initial background color has 0.2 opacity... */
+.alert.is-success {
+    --color-success-alert: hsl(165.9911894273deg, 100%, 44.5098039216%, 1.0)
 }
 
 /* Names field_with_errors does not follow convention because it is a Rails-set class */

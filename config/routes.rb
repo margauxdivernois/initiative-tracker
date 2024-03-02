@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root to: redirect("/game")
+  root to: redirect("/code")
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get :login, to: 'authority#login', as: 'login'
+  post :login_parse, to: 'authority#login_parse', as: 'login_parse'
+  post :logout, to: 'authority#logout', as: 'logout'
+  get :code, to: 'authority#code', as: 'code'
 
   resources :game, only: [:index] do
     collection do

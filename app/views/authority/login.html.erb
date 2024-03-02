@@ -1,0 +1,16 @@
+<div class="column is-half is-offset-3 center-content grid">
+  <div class="panel">
+    <h1><i class="iconoir-hexagon-dice has-text-primary"></i> Entrez le code de MJ</h1>
+    <div class="card__content">
+        <%= form_with url: login_parse_path do |form| %>
+          <%= form.text_field :code, required: true, placeholder: 'ABCDE' %>
+          <div class="has-text-center">
+              <%= button_tag type: "submit", class: "button is-rounded is-primary is-shrink mb-0 mt-2" do %>
+                Accéder au combat et à la configuration
+              <% end %>
+          </div>
+
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -3,6 +3,7 @@ class GameController < ApplicationController
 
   # GET /game
   def index
+    # TODO
     @fight = Fight.last
   end
 

@@ -16,6 +16,14 @@
   <body>
     <main>
       <div class="grid h-100">
+
+        <% flash.each do |type, msg| %>
+        <div class="alert is-<%= type %>">
+          <span class="me-4"><%= msg %></span>
+          <a class="button--close has-no-background" onclick="this.closest('.alert').remove()"></a>
+        </div>
+        <% end %>
+
         <%= yield %>
       </div>
     </main>
