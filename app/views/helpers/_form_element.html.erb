@@ -5,6 +5,7 @@
     <%= form.label field %>
     <%= form.text_field field, placeholder: placeholder if type === 'text' %>
     <%= form.number_field field, placeholder: placeholder, in: number_in if type === 'number' %>
+
     <% if type === 'select' %>
     <div class="is-select">
         <%= form.select field, options %>
@@ -18,5 +19,17 @@
         <label for="roundedSwitch"></label>
     </div>
     <% end%>
+
+    <% if type === 'file' %>
+
+    <div class="is-file-input">
+        <%= form.file_field field, id: "file-input-#{field}" %>
+        <label for="file-input-<%= field %>" class="button is-rounded">
+            <i class="iconoir-media-image me-2"></i>
+            <span>Sélectionner une image</span>
+        </label>
+    </div>
+    <% end %>
+
     <div class="field_with_errors is-text-smaller always-take-space"><%= element.errors.full_messages_for(field).join(', ') %></div>
 </div>

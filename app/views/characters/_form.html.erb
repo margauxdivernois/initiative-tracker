@@ -31,6 +31,25 @@
         field: :url,
         placeholder: "Lien externe privé" %>
 
+    <div class="grid">
+        <div class="column p-0">
+            <%= render "/helpers/form_element",
+                form: form,
+                element: @character,
+                field: :image,
+                type: 'file' %>
+        </div>
+
+        <div class="column p-0">
+            <div class="image is-thumbnail">
+            <% if @character.image.attached? %>
+                <%= image_tag @character.image, style: 'height: 200px; object-fit: cover; object-position: center top;
+width: 100%;' %>
+            <% end %>
+            </div>
+        </div>
+    </div>
+
     <%= render "/helpers/form_element",
         form: form,
         element: @character,

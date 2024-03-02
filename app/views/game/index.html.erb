@@ -18,7 +18,14 @@
     <% end %>
   </div>
 </div>
-<div class="column h-100 p-0"><img id="character-image" src="https://cdna.artstation.com/p/assets/images/images/030/594/622/large/art-of-nate-halfelf-bigfile.jpg?1601059833" /></div>
+<div class="column h-100 p-0">
+  <% if @fight.current_player && @fight.current_player.character.image.attached? %>
+    <%= image_tag @fight.current_player.character.image, id: "character-image" %>
+  <% end %>
+  <%= button_to :logout, method: :post, class: 'button is-rounded is-shrink', id: 'logout-button' do %>
+    <i class="iconoir-log-out me-1"></i> Déconnexion
+  <% end %>
+</div>
 <% else %>
   Pas de combat en cours
 <% end %>
