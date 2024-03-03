@@ -22,6 +22,12 @@
       <% end %>
 
       <%= yield %>
+
+      <% if @is_gm %>
+        <%= button_to :logout, method: :post, class: 'button is-rounded is-shrink', id: 'logout-button' do %>
+          <i class="iconoir-log-out me-1"></i> <%= t('system.logout') %>
+        <% end %>
+      <% end %>
     </main>
   </body>
 </html>

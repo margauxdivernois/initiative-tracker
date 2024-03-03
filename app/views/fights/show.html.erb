@@ -49,11 +49,6 @@
     <% if @fight.current_player && @fight.current_player.character.image.attached? %>
       <%= image_tag @fight.current_player.character.image, id: "character-image" %>
     <% end %>
-    <% if @is_gm %>
-      <%= button_to :logout, method: :post, class: 'button is-rounded is-shrink', id: 'logout-button' do %>
-        <i class="iconoir-log-out me-1"></i> <%= t('system.logout') %>
-      <% end %>
-    <% end %>
   </div>
 </div>
 <% unless @is_gm %>
