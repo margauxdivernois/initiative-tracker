@@ -65,12 +65,15 @@ Default value is : `1234`
 
 ### Future
 
-Version 1.0 presents some limitations which could be improved:
+The developed application allows to manage the initiatives during a TTRPG fight and answer the specifications.
+
+Version 1.0 presents some limitations which could be improved in the future :
 
 - Create a Fight from the UI
 - Search field to filter / find a character
 - Improvement of the UI when many characters are created.
 - Temporary characters are currently not different from any other character, so their usage is not presenting much interest now.
+- Condition-system was not developed. It would be a nice addition to the current platform.
 
 ### Technologies
 
@@ -85,3 +88,7 @@ Version 1.0 presents some limitations which could be improved:
 #### Formatter / Linter
 
 Unfortunately, a linter and formatter could not be easily included into V1.0. It will be investigated in the future.
+
+#### Translations
+
+The application is currently only available in French. However, all strings used are placed in the I18n structure.
