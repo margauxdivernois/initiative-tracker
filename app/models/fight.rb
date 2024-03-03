@@ -12,7 +12,7 @@ class Fight < ApplicationRecord
         # Manage Turn Count
         if @index >= character_fights.count
           @index = @index % character_fights.count
-          turn_count += 1
+          self.turn_count += 1
         end
 
         self.current_player = character_fights[@index]

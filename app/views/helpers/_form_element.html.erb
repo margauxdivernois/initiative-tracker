@@ -14,8 +14,7 @@
 
     <% if type === 'switch' %>
     <div class="is-switch is-rounded">
-        <%= form.check_box field %>
-        <input type="checkbox" id="roundedSwitch">
+        <%= form.check_box field, { id: "roundedSwitch" } %>
         <label for="roundedSwitch"></label>
     </div>
     <% end%>

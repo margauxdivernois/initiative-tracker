@@ -29,7 +29,7 @@ class CharacterFightsController < ApplicationController
   def update
     respond_to do |format|
       if @character_fight.update(character_fight_params)
-        format.html { redirect_back_or_to game_index_path }
+        format.html { redirect_back_or_to fight_path }
         format.json { render :show, status: :ok, location: @character_fight }
       else
         format.html { render :edit, status: :unprocessable_entity }
