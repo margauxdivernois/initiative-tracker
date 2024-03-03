@@ -4,6 +4,17 @@ class CharacterFight < ApplicationRecord
 
   validates :initiative, numericality: { only_integer: true }
 
+  def safe_destroy
+    # Set manually to null the current player if it's within the deleted players
+    # Could be improved with another structure of "current_player"
+    if fight.current_player === self
+      fight.current_player = nil
+      fight.save!
+    end
+
+    destroy
+  end
+
   class << self
     def align_with_count(character, count, fight)
       current_characters = CharacterFight.where(character: character, fight: fight)

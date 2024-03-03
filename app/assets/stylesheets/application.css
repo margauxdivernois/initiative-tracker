@@ -172,11 +172,11 @@ input.inspiration-input {
     z-index: 100;
 }
 
-#character-image {
+#character-image-preview {
     width: 250px;
 }
 
-#character-image img {
+#character-image-preview img {
     width: 250px;
     object-fit: cover;
     object-position: center top;

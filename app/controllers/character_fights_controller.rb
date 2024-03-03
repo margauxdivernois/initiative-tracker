@@ -47,7 +47,7 @@ class CharacterFightsController < ApplicationController
   end
 
   def destroy
-    @character_fight.destroy
+    @character_fight.safe_destroy
 
     respond_to do |format|
       format.html { redirect_back_or_to :index }
