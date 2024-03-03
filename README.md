@@ -1,54 +1,87 @@
 # Initiative Tracker for TTRPG
 
-This project's goal is the development of a simple and straightforward application allowing the GM (game master) to keep track of the initiatives of the players and NPCs (non-player characters) during a fight in TTRPG (tabletop role playing games) such as Dungeon & Dragons. 
+This project's goal is the development of a simple and straightforward application allowing the GM (game master) to keep track of the initiatives of the players and NPCs (non-player characters) during a fight in TTRPG (tabletop role playing games) such as Dungeon & Dragons.
 
-The application must contains **two main pages**: 
+## Specifications
 
-- One dedicated to the GM needing a simple authentication system in which they can see secret information and manage the life and status of the NPC.
-- One dedicated to the players, only imagined for display purpose. It will not be possible to interact with it, but it should update itself frequently to display the battle state.  
+- [Access to the specifications](Specifications.md)
 
-A third page will allow the GM to select the characters involved in the fight, either from a simple form or from a stock of saved characters. 
+## How to use
 
-## Usage workflow 
+## How to launch
 
-- At the beginning of a fight, every player throw a dice and calculate their initiative. The GM will throw it for every NPC taking part in the fight. This will generate the playing order, with the biggest one being the first to play. 
-- The GM will select on the application the characters for the fight and insert their respective initiative. They can either create a new character or take one from a list. The fight can start. 
-- Each time a player finish their turn, the GM can click on "Next turn" button allowing the screen to update and display the next character playing. 
-- The GM can update the life or remove the characters from the initiative tracker anytime. The life is only shown on the GM's screen. 
+### Ruby on Rails
 
-## Functionalities 
+The development was done using the environment provided during the [MAS-RAD lessons](https://github.com/mas-rad/todomvc-rails-2023).
 
-### Must have - Game Master-centric
+1. Install Docker and run :
 
-This application is mainly focused on the GM side. 
+```bash
+docker volume create ruby-bundle-cache
+```
 
-- Access with a password to the GM-related pages
-- Initiative tracking as a list, updated with a "next" button 
-- Possibility to create characters using a form 
-- Possibility to store these characters for a future usage
-- Selection of the characters, with possibility to insert their initiative roll
-- Update the life of a character from the initiative page
+2. Add the following alias to the shell configuration
 
-### Nice to have
+```bash
+alias docked='docker run --rm -it -v ${PWD}:/rails -v ruby-bundle-cache:/bundle -p 3000:3000 ghcr.io/mas-rad/rails-cli-firefox-esr:latest'
+```
 
-- Additional informations can be added to a character, like their AC (Armor Class), an URL for additional informations and an image (which will be displayed when they play)
-- A character can be "duplicable" or "unique"
-- Game Master can add a condition, like charmed, frightened, etc
-- Game Master can add a character in an on-going fight 
-- Player-dedicated screen with minimal informations
+3. Clone this repository and run the following commands:
 
-### Initial wireframes
+```bash
+docked bundle
+docked rails db:migrate
+```
 
-![image](https://github.com/margauxdivernois/initiative-tracker/assets/11376158/457bc882-570f-4f25-9ee2-dab2419916e1)
+4. Load the fixtures (as Fights cannot be created through the interface)
 
-![image](https://github.com/margauxdivernois/initiative-tracker/assets/11376158/050d0697-c443-482d-a635-3d14e316a25d)
+```
+docked rails db:fixtures:load
+```
 
-![image](https://github.com/margauxdivernois/initiative-tracker/assets/11376158/2a789205-b4f5-4a9a-8b30-4ee1514b10bf)
+4. Run the server
 
-## Technology 
+```bash
+docked rails server
+```
 
-- This application will be developed with Ruby on Rails.
-- Multiple accounts are not needed here. The authentication will be managed with a single configured account defined during the deployment (environment). The authentication will be necessary for the GM to access the configuration and full-scoped initiative tracker. 
-- Database initial image
+The server should be available on `http://localhost:3000`.
 
-<img width="363" alt="image" src="https://github.com/margauxdivernois/initiative-tracker/assets/11376158/094f1d40-25ba-437e-8ad4-e4ad10a78d21">
+### Password
+
+The Game-Master dedicated pages are securized behind a password. This password is set in the environment files (`development.rb` and `production.rb`)
+
+Default value is : `1234`
+
+### How it works
+
+1. Game Master log into the platform using a predefined password (see above for the default one).
+
+2. Once connected, the Game Master can access the fights and the characters. The platform does not currently provide a creation form for the fights. As of version 1.0, it is necessary to use the fixtures.
+
+3. Game Master can manage the characters from the "Characters" tab. They can create, update and delete the characters.
+
+4. From the Fight tab, Game Master can access the fight screen. They can add characters, launch the fight, update the initiative and life (double-clic on the information) and advance the current player. They can also remove a player from the fight.
+
+### Future
+
+Version 1.0 presents some limitations which could be improved:
+
+- Create a Fight from the UI
+- Search field to filter / find a character
+- Improvement of the UI when many characters are created.
+- Temporary characters are currently not different from any other character, so their usage is not presenting much interest now.
+
+### Technologies
+
+#### Orbit CSS
+
+[Orbit CSS](https://orbitcss.com/) was selected as a CSS Framework for this project, mostly as an opportunity to test a light-weight modern framework. However, this experiment showed that it would probably not be the best call - as many simple custom-classes had to be created.
+
+#### Iconoir
+
+[Iconoir](https://iconoir.com/) was selected as the Icon library for the application.
+
+#### Formatter / Linter
+
+Unfortunately, a linter and formatter could not be easily included into V1.0. It will be investigated in the future.
