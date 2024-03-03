@@ -1,9 +1,14 @@
 class AuthorityController < ApplicationController
-  skip_before_action :authenticate
-  add_flash_types :success #TODO Test if needed
+  skip_before_action :authenticate, :set_show_tabs
 
   # GET /login
   def login
+    # Redirect to fights list if the user is connected
+    if @is_gm
+      respond_to do |format|
+        format.html { redirect_to :fights }
+      end
+    end
   end
 
   # POST /login_parse
@@ -12,9 +17,9 @@ class AuthorityController < ApplicationController
       # Check the token
       if code_params === Rails.application.config.token
         session[:authenticated] = true
-        format.html { redirect_to game_index_path, flash: {success: 'Bienvenue!'} }
+        format.html { redirect_to :fights, flash: { success: t('alerts.welcome') } }
       else
-        format.html { redirect_to :login, flash: {danger: 'Mot de passe incorrect'} }
+        format.html { redirect_to :login, flash: { danger: t('alerts.wrong_password') } }
       end
     end
   end
@@ -27,7 +32,6 @@ class AuthorityController < ApplicationController
   end
 
   private
-
     # Only allow a list of trusted parameters through.
     def code_params
       params.require(:code)

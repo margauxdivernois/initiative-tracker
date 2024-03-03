@@ -1,0 +1,22 @@
+<!-- TODO DRY with `character_fights/index.html.erb -->
+<% @characters.each do | (key, array) | %>
+    <div class="mb-4">
+        <span class="is-heading">
+            <%= t("character_type.#{key}") %>
+        </span>
+
+        <%= turbo_frame_tag "characters_#{key}" do %>
+            <% array.each do | character | %>
+                <%= render character %>
+            <% end %>
+
+            <% if array.empty? %>
+                <div class="grid v-align-middle flex-space-between">
+                    <div class="m-1 column">
+                        <%= t('character_type.empty') %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+    </div>
+<% end %>

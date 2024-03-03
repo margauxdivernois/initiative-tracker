@@ -1,4 +1,17 @@
-<span class="is-heading">
-    Créer un nouveau personnage
-</span>
-<%= render "form" %>
+<div class="grid">
+    <div class="column h-100 is-two-fourth">
+        <%= render 'characters' %>
+
+        <div class="has-text-center">
+        <%= link_to new_character_path, data: { turbo_frame: "form_character_frame" }, class: "button is-rounded is-primary is-shrink mb-0 me-1" do %>
+            <i class="iconoir-plus-circle me-1"></i> <%= t('.create') %>
+        <% end %>
+        </div>
+    </div>
+    <div class="column grid is-vertical flex-space-between has-left-border">
+        <div class="column is-shrink">
+            <%= turbo_frame_tag "form_character_frame" %>
+        </div>
+    </div>
+
+</div>

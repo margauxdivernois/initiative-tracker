@@ -46,3 +46,52 @@ fr:
         blank: ne peut pas être vide
         not_a_number: doit être un nombre
         taken: est déjà utilisé
+  time:
+    formats:
+      default: "%d.%m.%y %H:%M"
+  alerts:
+    forbidden: Vous devez vous connecter pour accéder à cette page.
+    wrong_password: Mot de passe incorrect
+    welcome: Bienvenue!
+  authority:
+    login:
+      enter_code: Entrez le code de MJ
+      access_fight: Accéder au combat et à la configuration
+  character_fights:
+    index:
+      back: Retour au combat
+  characters:
+    form:
+      name_placeholder: Nom du personnage
+      details_placeholder: Détails visibles sur le personnage
+      url_placeholder: Lien externe privé
+      save: Sauver
+    edit:
+      title: Éditer le personnage
+    index:
+      create: Créer un nouveau personnage
+    new:
+      title: Créer un personnage
+  fights:
+    index:
+      title: Combats
+    show:
+      no_fighter: Aucun combattant n'a été sélectionné
+      back: Retour
+      manage: Gérer les personnages
+      copy_link: Copier le lien de partage
+      next: Tour suivant
+      start: Commencer le combat
+      turn_count: Tour n°%{count}
+  character_type:
+    character: Personnage
+    monster: Monstre
+    temporary: Temporaire
+    empty: Pas encore de personnages dans cette catégorie
+  system:
+    logout: Déconnexion
+  layouts:
+    header:
+      fights: Combats
+      characters: Personnages
+

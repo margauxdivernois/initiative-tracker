@@ -85,6 +85,12 @@ html, body, main {
     border-radius: 1em;
 }
 
+.has-left-border {
+    border-left: var(--border-width) solid var(--border-color);
+    --border-color: hsl(0deg, 0%, 90.1960784314%, 1);
+    --border-width: 1px;
+}
+
 /* Fix issue with color of the heading */
 .is-medium-heading, .is-small-heading {
     color: inherit;
@@ -164,6 +170,20 @@ input.inspiration-input {
     top: 1em;
     right: 1em;
     z-index: 100;
+}
+
+#character-image {
+    width: 250px;
+}
+
+#character-image img {
+    width: 250px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.is-rtl {
+    direction: rtl;
 }
 
 /* Because the initial background color has 0.2 opacity... */
