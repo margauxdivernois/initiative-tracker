@@ -29,7 +29,7 @@ html, body, main {
 }
 
 .h-100 {
-    height: 100%;
+    min-height: 100%;
 }
 
 .v-align-middle {
@@ -85,6 +85,12 @@ html, body, main {
     border-radius: 1em;
 }
 
+.has-left-border {
+    border-left: var(--border-width) solid var(--border-color);
+    --border-color: hsl(0deg, 0%, 90.1960784314%, 1);
+    --border-width: 1px;
+}
+
 /* Fix issue with color of the heading */
 .is-medium-heading, .is-small-heading {
     color: inherit;
@@ -133,6 +139,56 @@ input.inspiration-input {
 .error-message {
     color: darkred;
     font-size: smaller;
+}
+
+.center-content {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.is-relative {
+    position: relative;
+}
+
+#logout-button {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+
+#lock-login {
+    font-size: x-large;
+    color: var(--color-primary);
+    position: absolute;
+    top: 0em;
+    right: 0.5em;
+}
+
+.alert {
+    position: fixed;
+    top: 1em;
+    right: 1em;
+    z-index: 100;
+}
+
+#character-image-preview {
+    width: 250px;
+}
+
+#character-image-preview img {
+    width: 250px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.is-rtl {
+    direction: rtl;
+}
+
+/* Because the initial background color has 0.2 opacity... */
+.alert.is-success {
+    --color-success-alert: hsl(165.9911894273deg, 100%, 44.5098039216%, 1.0)
 }
 
 /* Names field_with_errors does not follow convention because it is a Rails-set class */

@@ -4,13 +4,13 @@
         form: form,
         element: @character,
         field: :name,
-        placeholder: "Nom du personnage" %>
+        placeholder: t('.name_placeholder') %>
 
     <%= render "/helpers/form_element",
         form: form,
         element: @character,
         field: :details,
-        placeholder: "Détails visibles sur le personnage" %>
+        placeholder: t('.details_placeholder') %>
 
     <%= render "/helpers/form_element",
         form: form,
@@ -29,7 +29,7 @@
         form: form,
         element: @character,
         field: :url,
-        placeholder: "Lien externe privé" %>
+        placeholder: t('.url_placeholder') %>
 
     <div class="grid">
         <div class="column p-0">
@@ -40,11 +40,10 @@
                 type: 'file' %>
         </div>
 
-        <div class="column p-0">
-            <div class="image is-thumbnail">
+        <div class="column p-0 is-rtl">
+            <div id="character-image-preview" class="image is-thumbnail">
             <% if @character.image.attached? %>
-                <%= image_tag @character.image, style: 'height: 200px; object-fit: cover; object-position: center top;
-width: 100%;' %>
+                <%= image_tag @character.image %>
             <% end %>
             </div>
         </div>
@@ -55,7 +54,7 @@ width: 100%;' %>
         element: @character,
         field: :character_type,
         type: 'select',
-        options: Character.character_types.keys %>
+        options: Character.character_types.keys.map { |k| [t("character_type.#{k}"), k] } %>
 
     <%= render "/helpers/form_element",
         form: form,
@@ -65,7 +64,7 @@ width: 100%;' %>
 
     <div class="has-text-center">
         <%= button_tag type: "submit", class: "button is-rounded is-primary is-shrink mb-0 mt-2" do %>
-            <i class="iconoir-plus-circle me-1"></i> Sauvegarder
+            <i class="iconoir-plus-circle me-1"></i> <%= t('.save') %>
         <% end %>
     </div>
 

@@ -1,0 +1,59 @@
+<div class="grid h-100">
+  <div class="main-section h-100 column is-two-thirds grid is-vertical flex-space-between">
+    <div class="column is-shrink">
+      <% @fight.character_fights.each do |character_fight| %>
+        <% if @is_gm %>
+          <%= render 'character_fights/character_fight_gm', is_current: @fight.current_player === character_fight, character_fight: character_fight %>
+        <% else %>
+          <%= render character_fight, is_current: @fight.current_player === character_fight %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <% if @fight.character_fights.empty? %>
+      <div class="column has-text-center">
+          <span class="is-medium-heading v-align-middle">
+            <%= t('.no_fighter') %>
+          </span>
+      </div>
+    <% end %>
+
+    <% if @is_gm %>
+      <div class="column is-shrink grid flex-space-between">
+        <div>
+          <%= link_to fights_path, class: 'button is-rounded is-shrink' do %>
+            <i class="iconoir-arrow-left me-1"></i> <%= t('.back') %>
+          <% end %>
+          <%= link_to fight_character_fights_path(@fight), class: 'button is-rounded is-shrink' do %>
+            <i class="iconoir-plus-circle me-1"></i> <%= t('.manage') %>
+          <% end %>
+        </div>
+
+        <%= t('.turn_count', count: @fight.turn_count) %>
+
+        <!-- TODO : Something else than "a" but with hovering system -->
+        <a href="" data-controller="copy-to-clipboard"
+          data-action="click->copy-to-clipboard#copy"
+          data-copy-to-clipboard-content-value="<%= url_for(:id => @fight.id, action: "show", :only_path => false) %>">
+          <i class="iconoir-copy me-1"></i> <%= t('.copy_link') %>
+        </a>
+
+        <%= button_to next_fight_path, method: :post, class: 'button is-primary is-rounded is-shrink' do %>
+          <i class="iconoir-arrow-right me-1"></i>
+          <%= @fight.current_player ? t('.next') : t('.start') %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="column h-100 p-0">
+    <% if @fight.current_player && @fight.current_player.character.image.attached? %>
+      <%= image_tag @fight.current_player.character.image, id: "character-image" %>
+    <% end %>
+  </div>
+</div>
+<% unless @is_gm %>
+  <script type="text/javascript">
+    // Reload the page for players every 2 seconds
+    setTimeout("location.reload();", 2000);
+  </script>
+<% end %>

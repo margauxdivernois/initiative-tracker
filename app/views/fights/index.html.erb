@@ -1,0 +1,20 @@
+<section class="grid">
+    <div class="column">
+        <span class="is-heading">
+            <%= t('.title') %>
+        </span>
+
+        <nav class="menu">
+            <ul class="menu__list">
+                <% @fights.each do | fight | %>
+                    <li>
+                        <%= link_to fight do %>
+                            <span class="is-small-heading"><%= fight.name %></span>
+                            <%= localize(fight.created_at) %>
+                        <% end %>
+                    </li>
+                <% end %>
+            </ul>
+        </nav>
+    </div>
+</section>

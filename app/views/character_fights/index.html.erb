@@ -1,0 +1,34 @@
+<div class="grid h-100">
+  <div class="column is-half is-offset-3 center-content">
+    <div class="panel">
+        <div class="column is-shrink grid flex-space-between">
+            <%= link_to fight_path(@fight), class: 'button is-rounded is-shrink' do %>
+                <i class="iconoir-arrow-left me-1"></i> <%= t('.back') %>
+            <% end %>
+        </div>
+        <div class="column">
+        <% @characters.each do | (key, array) | %>
+            <div class="mb-4">
+                <span class="is-heading">
+                    <%= t("character_type.#{key}") %>
+                </span>
+
+                <%= turbo_frame_tag "characters_#{key}" do %>
+                    <% array.each do | character | %>
+                        <%= render "characters/character_for_fight", character: character, count_in_fight: @fight.character_count_in_fight(character) %>
+                    <% end %>
+
+                    <% if array.empty? %>
+                        <div class="grid v-align-middle flex-space-between">
+                            <div class="m-1 column">
+                                <%= t('character_type.empty') %>
+                            </div>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+  </div>
+</div>

@@ -1,10 +1,14 @@
 class CharactersController < ApplicationController
   before_action :set_character, only: %i[ edit update destroy ]
-  before_action :set_layout_variables, only: %i[ index edit]
-  layout "characters"
 
   # GET /characters
   def index
+    @characters = Character.grouped_by_type
+  end
+
+  # GET /characters/new
+  # Included with Turbo
+  def new
     @character = Character.new
   end
 
@@ -14,24 +18,24 @@ class CharactersController < ApplicationController
       @character = Character.new(character_params)
       if @character.save
         format.html { redirect_back_or_to characters_path }
+        format.turbo_stream
       else
-        # TODO Check how to avoid these two duplicate from index...
-        @characters = Character.order(:name).group_by(&:character_type)
-        @fight = Fight.last
-        format.html { render :index, status: :unprocessable_entity }
+        format.html { render :new, status: :unprocessable_entity }
       end
     end
   end
 
-  # GET /character/1/edit
+  # GET /character/:id/edit
   def edit
   end
 
-  # PATCH/PUT /character/1
+  # PATCH/PUT /character/:id
+  # Included with Turbo
   def update
     respond_to do |format|
       if @character.update(character_params)
         format.html { redirect_back_or_to characters_path }
+        format.turbo_stream
       else
         format.html { render :edit, status: :unprocessable_entity }
       end
@@ -39,10 +43,11 @@ class CharactersController < ApplicationController
   end
 
   def destroy
-    @character.destroy!
+    @character.destroy
 
     respond_to do |format|
       format.html { redirect_back_or_to :index }
+      format.turbo_stream
     end
   end
 
@@ -50,11 +55,6 @@ class CharactersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_character
       @character = Character.find(params[:id])
-    end
-
-    def set_layout_variables
-      @characters = Character.order(:name).group_by(&:character_type)
-      @fight = Fight.last
     end
 
     # Only allow a list of trusted parameters through.
